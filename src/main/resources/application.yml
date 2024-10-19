@@ -1,0 +1,13 @@
+spring:
+  application:
+  name: agenciacafej
+  server:
+    port: 8080
+
+  jpa:
+    show-sql: true
+  datasource:
+    url: "jdbc:mysql://localhost:3306/AgenciaCafe"
+    username: "root"
+    password: "123456"
+    driver-class-name: "com.mysql.cj.jdbc.Driver"
