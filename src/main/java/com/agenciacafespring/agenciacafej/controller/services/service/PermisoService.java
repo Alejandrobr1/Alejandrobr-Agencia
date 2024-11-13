@@ -7,7 +7,6 @@ import com.agenciacafespring.agenciacafej.entity.Permiso;
 import java.util.List;
 
 public interface PermisoService {
-
     List<Permiso> getListPermiso();
     void deletePermiso(Long id);
     PermisoResponse searchPermiso(Long id);

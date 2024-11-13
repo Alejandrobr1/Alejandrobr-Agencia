@@ -55,18 +55,19 @@ public class PersonaServiceImplement implements PersonaService {
 
     @Override
     public void updatePerson(PersonaRequest personaRequest) {
+        Persona persona = personaRepository.findById(personaRequest.getId()).orElse(null);
         if(Objects.nonNull(personaRequest)){
-            Persona persona = Persona.builder()
-                    .nombre(personaRequest.getNombre())
-                    .apellido(personaRequest.getApellido())
-                    .fechaNacimiento(personaRequest.getFechaNacimiento())
-                    .lugarNacimiento(personaRequest.getLugarNacimiento())
-                    .estadoSistema(personaRequest.getEstadoSistema())
-                    .build();
+
+                persona.setNombre(personaRequest.getNombre());
+                persona.setApellido(personaRequest.getApellido());
+                persona.setFechaNacimiento(personaRequest.getFechaNacimiento());
+                persona.setLugarNacimiento(personaRequest.getLugarNacimiento());
+                persona.setEstadoSistema(personaRequest.getEstadoSistema());
 
             personaRepository.save(persona);
         }
     }
+
 
     @Override
     public List<Persona> getlistPersona() {

@@ -20,7 +20,7 @@ public class CompraServiceImplement implements CompraService {
 
     @Override
     public List<Compra> getListCompra() {
-        return compraRepository.listCompra();
+        return compraRepository. listCompra();
     }
 
     @Override

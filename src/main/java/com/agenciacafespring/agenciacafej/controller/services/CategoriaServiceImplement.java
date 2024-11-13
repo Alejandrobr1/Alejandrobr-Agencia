@@ -2,7 +2,7 @@ package com.agenciacafespring.agenciacafej.controller.services;
 
 import com.agenciacafespring.agenciacafej.controller.request.CategoriaRequest;
 import com.agenciacafespring.agenciacafej.controller.response.CategoriaResponse;
-import com.agenciacafespring.agenciacafej.controller.services.service.CatergoriaService;
+import com.agenciacafespring.agenciacafej.controller.services.service.CategoriaService;
 import com.agenciacafespring.agenciacafej.entity.Categoria;
 import com.agenciacafespring.agenciacafej.entity.repository.CategoriaRepository;
 import lombok.RequiredArgsConstructor;
@@ -10,10 +10,11 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class CategoriaServiceImplement implements CatergoriaService {
+public class CategoriaServiceImplement implements CategoriaService {
     private final CategoriaRepository categoriaRepository;
     @Override
     public List<Categoria> getListCategoria() {
@@ -39,10 +40,10 @@ public class CategoriaServiceImplement implements CatergoriaService {
 
     @Override
     public void saveCategoria(CategoriaRequest categoriaRequest) {
+        Categoria categoria = new Categoria();
         if(Objects.nonNull(categoriaRequest)){
-            Categoria categoria = Categoria.builder()
-                    .nombreCategoria(categoriaRequest.getNombreCategoria())
-                    .build();
+                    categoria.setId(categoriaRequest.getId());
+                    categoria.setNombreCategoria(categoriaRequest.getNombreCategoria());
 
             categoriaRepository.save(categoria);
         }
@@ -51,11 +52,24 @@ public class CategoriaServiceImplement implements CatergoriaService {
     @Override
     public void updateCategoria(CategoriaRequest categoriaRequest) {
         if(Objects.nonNull(categoriaRequest)){
-            Categoria categoria = Categoria.builder()
-                    .nombreCategoria(categoriaRequest.getNombreCategoria())
-                    .build();
+            Optional<Categoria> categoria = categoriaRepository.findById(categoriaRequest.getId());
+            if (categoria.isPresent()) {
+                Categoria categoriaActualizada = buildCategoriaEntity(categoriaRequest);
+                categoriaRepository.save(categoriaActualizada);
+            }
 
-            categoriaRepository.save(categoria);
+
+
         }
     }
+
+    private static Categoria buildCategoriaEntity(CategoriaRequest categoriaRequest) {
+        return Categoria.builder()
+                .id(categoriaRequest.getId())
+                .nombreCategoria(categoriaRequest.getNombreCategoria())
+                .build();
+
+    }
+
+
 }

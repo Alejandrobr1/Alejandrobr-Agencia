@@ -1,12 +1,9 @@
 package com.agenciacafespring.agenciacafej.controller;
 
 
-import com.agenciacafespring.agenciacafej.controller.request.TipoFacturaRequest;
 import com.agenciacafespring.agenciacafej.controller.request.TipoProductoRequest;
-import com.agenciacafespring.agenciacafej.controller.response.TipoFacturaResponse;
 import com.agenciacafespring.agenciacafej.controller.response.TipoProductoResponse;
 import com.agenciacafespring.agenciacafej.controller.services.service.TipoProductoService;
-import com.agenciacafespring.agenciacafej.entity.TipoFactura;
 import com.agenciacafespring.agenciacafej.entity.TipoProducto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -17,6 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("tipoProducto/v1")
+@CrossOrigin(origins = "*")
 @RequiredArgsConstructor
 public class TipoProductoRestController {
 private final TipoProductoService tipoProductoService;

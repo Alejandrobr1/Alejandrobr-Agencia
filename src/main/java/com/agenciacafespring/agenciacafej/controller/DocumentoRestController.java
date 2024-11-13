@@ -13,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("documento/v1")
+@CrossOrigin(origins = "*")
 @RequiredArgsConstructor
 public class DocumentoRestController {
     private final DocumentoService documentoService;

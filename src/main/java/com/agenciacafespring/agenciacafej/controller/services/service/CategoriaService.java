@@ -6,7 +6,7 @@ import com.agenciacafespring.agenciacafej.entity.Categoria;
 
 import java.util.List;
 
-public interface CatergoriaService {
+public interface CategoriaService {
 
     List<Categoria> getListCategoria();
     void deleteCategoria(Long id);

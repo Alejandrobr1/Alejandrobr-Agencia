@@ -1,6 +1,5 @@
 package com.agenciacafespring.agenciacafej.entity.repository;
 
-import com.agenciacafespring.agenciacafej.entity.TipoFactura;
 import com.agenciacafespring.agenciacafej.entity.TipoProducto;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

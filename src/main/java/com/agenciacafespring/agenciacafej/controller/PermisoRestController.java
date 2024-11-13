@@ -16,13 +16,15 @@ import java.util.List;
 
 @RestController
 @RequestMapping("permiso/v1")
+@CrossOrigin(origins = "*")
 @RequiredArgsConstructor
 public class PermisoRestController {
     private final PermisoService permisoService;
+
     @GetMapping("/list")
     public ResponseEntity<List<Permiso>> listPermiso() {
-        List<Permiso> facturaList = permisoService.getListPermiso();
-        return new ResponseEntity<>(facturaList, HttpStatus.ACCEPTED);
+        List<Permiso> permisoList = permisoService.getListPermiso();
+        return new ResponseEntity<>(permisoList, HttpStatus.ACCEPTED);
     }
 
 

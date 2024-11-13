@@ -7,16 +7,17 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import com.agenciacafespring.agenciacafej.controller.services.service.CatergoriaService;
+import com.agenciacafespring.agenciacafej.controller.services.service.CategoriaService;
 
 import java.util.List;
 
 
 @RestController
 @RequestMapping("categoria/v1")
+@CrossOrigin(origins = "*")
 @RequiredArgsConstructor
 public class CategoriaRestController {
-    private final CatergoriaService categoriaService;
+    private final CategoriaService categoriaService;
 
     @GetMapping("/list")
     public ResponseEntity<List<Categoria>> listCategoria() {

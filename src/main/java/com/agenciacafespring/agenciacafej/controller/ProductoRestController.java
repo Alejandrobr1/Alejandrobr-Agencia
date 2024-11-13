@@ -13,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("producto/v1")
+@CrossOrigin(origins = "*")
 @RequiredArgsConstructor
 public class ProductoRestController {
     private final ProductoService productoService;
